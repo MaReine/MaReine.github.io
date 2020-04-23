@@ -1,0 +1,60 @@
+author: "王亮" # 作者
+description: "王亮的博客"
+keyword: "前端,es6,html5,css3,js,webpack,vue"
+favicon:
+
+excerpt_link: "阅读更多"
+
+menu:
+  主页: /
+  标签: /tags/
+  归档: /archives/
+  开源项目: /project/
+  关于: /about/
+
+# highlight
+highlight: tomorrow
+
+# catalog 目录
+catalog: true
+
+# donate 捐赠
+donate: true
+
+# qrcode 分享二维码
+qrcode: true
+
+# comment
+# you can set gitment, uyan or disqus
+
+comment: gitment
+
+# gitment config
+gitment_owner: zhugexiaoxiaoliang
+gitment_repo: https://zhugexiaoxiaoliang.github.io
+gitment_oauth_id: a893559541b0f60577b0
+gitment_oauth_secret: 793cda806874db8a8f81e91b137427107b4f95af
+
+# uyan config
+# if you want to use uyan as your blog comment, plz remove/comment out gitment config
+# baidu_id:
+
+# disqus config
+# disqus_shortname:
+
+about:
+  banner: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1583915550045&di=974894a5924944ee718c9123be7c7a6e&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fmobile%2F2018-06-11%2F5b1e31aabf9ee_270_185.jpg
+  avatar: https://avatars0.githubusercontent.com/u/20808003?s=460&v=4
+  description: "记录前端学习生涯的点点滴滴"
+  # weibo_username:
+  # twitter_username:
+  github_username: "zhugexiaoxiaoliang"
+  # zhihu_username:
+  # douban_username:
+  # linkedin_username:
+
+# MathJax Support
+mathjax:
+  enable: true
+  per_page: false
+  cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML
