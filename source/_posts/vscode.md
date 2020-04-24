@@ -1,7 +1,7 @@
 ---
 title: VisualStudioCode使用手册
 categories: []
-tags: ["开发工具"]
+tags: [开发工具]
 comments: false
 date: 2018-05-10 15:34:46
 img:
