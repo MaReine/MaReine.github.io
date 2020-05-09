@@ -1,9 +1,9 @@
 ---
-title: 面试题系列之JS
+title: 面试题系列之前端基础-JS
 categories: []
 tags: [面试题]
 comments: false
-date: 2020-04-23 11:11:04
+date: 2019-04-23 11:11:04
 img:
 ---
 ## JS
@@ -109,3 +109,5 @@ Object.prototype.__proto__ === null
 ### 继承
 
 ### 浅拷贝与深拷贝
+
+### call、apply、bind 的区别
