@@ -31,7 +31,7 @@ img:
 
 - 熟练掌握html5、css3、js、es6等前端开发技术。
 - 熟练使用Vue全家桶（vue+vue-router+vuex）、vue-cli、axios、element-ui、jquery等。
-- 熟悉前端安全、浏览器缓存、http网络协议、性能优化等。
+- 了解前端安全、浏览器缓存、http网络协议、性能优化等。
 - 具有丰富的前后端分离、未分离项目开发经验。
 - 熟练掌握组件插件的编写，熟悉webpack、gulp等自动化构建工具的使用。
 - 熟练使用响应式布局，移动端rem适配，flex布局等。
