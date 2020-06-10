@@ -6,6 +6,7 @@ comments: false
 date: 2018-05-10 15:34:46
 img:
 ---
+
 ## VisualStudioCode
 
 前端开发利器
@@ -38,7 +39,7 @@ img:
 
 语法规范检测工具
 
-``` json
+```json
 "editor.codeActionsOnSave": {
   "source.fixAll": true
 },
@@ -51,23 +52,23 @@ img:
 
 #### StandardJS - JavaScript Standard Style
 
-js Standard规范
+js Standard 规范
 
 #### Vetur
 
-vue代码片段工具
+vue 代码片段工具
 
-``` json
+```json
 "vetur.format.defaultFormatter.js": "none"
 ```
 
 #### HTML CSS Support
 
-让 html 标签上写class 智能提示当前项目所支持的样式
+让 html 标签上写 class 智能提示当前项目所支持的样式
 
 #### Debugger for Chrome
 
-让 vscode 映射 chrome 的 debug功能，静态页面都可以用 vscode 来打断点调试
+让 vscode 映射 chrome 的 debug 功能，静态页面都可以用 vscode 来打断点调试
 
 #### vscode-icons
 
@@ -75,7 +76,7 @@ vue代码片段工具
 
 #### Material Icon Theme
 
-好看的icons主题
+好看的 icons 主题
 
 #### Path Intellisense
 
@@ -83,9 +84,9 @@ vue代码片段工具
 
 #### koroFileHeader
 
-在vscode中用于生成文件头部注释和函数注释的插件
+在 vscode 中用于生成文件头部注释和函数注释的插件
 
-``` json
+```json
 "fileheader.customMade": {
   "Description": "",
   "Author": "wangliang",
@@ -111,7 +112,7 @@ vue代码片段工具
 
 #### JavaScript (ES6) code snippets
 
-es6代码片段
+es6 代码片段
 
 #### markdownlint
 
@@ -127,7 +128,24 @@ markdown 语法检查
 
 #### settings sync
 
-同步vscode配置 `ID:72fcab3ef5e3b87652e4d287275c4456`
+同步vscode插件和配置
+
+##### 获取 git token
+
+- Settings -> Personal access tokens -> Generate new token
+- Note:vscode-settings && Select scopes:gist -> Generate token
+- 获得 token：`8f107e3efe916bfd2639c1ec57e6a193beefd2c4`
+
+##### 获取 gist Id
+
+- Your gists -> 新建gist -> 随便输 -> Create secret gist
+- 在地址栏获得 gist Id: `a6fa20bed2e388f2efd5e45725c275a7`
+
+##### 常用快捷键
+
+- `shift+ctrl+p` 搜 `sync`
+- `shift+alt+u` 上传
+- `shift+alt+d` 下载
 
 #### Auto Close Tag
 
@@ -139,4 +157,4 @@ Markdown 辅助工具
 
 #### Markdown Preview Enhanced
 
-Markdown实时预览
+Markdown 实时预览
