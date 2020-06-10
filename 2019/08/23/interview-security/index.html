@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="记录前端学习生涯的点点滴滴">
+  <meta name="keyword" content="前端,es6,html5,css3,js,webpack,vue">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      面试题系列之前端安全 | 前端博客
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    
+<script src="/js/qrious.js"></script>
+
+  
+  
+    
+<script src="/js/gitment.js"></script>
+
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>前端博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">开源项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">开源项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>面试题系列之前端安全</h2>
+  <p class="post-date">2019-08-23</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="前端安全"><a href="#前端安全" class="headerlink" title="前端安全"></a>前端安全</h2><h3 id="浏览器安全"><a href="#浏览器安全" class="headerlink" title="浏览器安全"></a>浏览器安全</h3><h4 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h4><ul>
+<li>同源：域名、协议、端口相同，禁止对不同源的页面DOM进行操作，禁止使用XHR对象向不同源的服务器地址发起HTTP请求</li>
+</ul>
+<h4 id="浏览器沙箱"><a href="#浏览器沙箱" class="headerlink" title="浏览器沙箱"></a>浏览器沙箱</h4><ul>
+<li>渲染引擎由Sandbox隔离，网页内容要与浏览器内核进程通信要通过IPCchannel，在其中进行安全检查</li>
+</ul>
+<h4 id="恶意网址拦截"><a href="#恶意网址拦截" class="headerlink" title="恶意网址拦截"></a>恶意网址拦截</h4><ul>
+<li>浏览器周期性地从服务器端获取一份最新的恶意网址黑名单(木马网站和钓鱼网站)，如果用户上网时访问的网址存在于此黑名单中，浏览器就会弹出一个警告页面。</li>
+</ul>
+<h3 id="XSS攻击-跨站脚本攻击"><a href="#XSS攻击-跨站脚本攻击" class="headerlink" title="XSS攻击(跨站脚本攻击)"></a>XSS攻击(跨站脚本攻击)</h3><blockquote>
+<p>XSS(Cross-Site Scripting，跨站脚本攻击)是一种代码注入攻击。攻击者在目标网站上注入恶意代码，当被攻击者登陆网站时就会执行这些恶意代码，这些脚本可以读取 cookie，session tokens，或者其它敏感的网站信息，对用户进行钓鱼欺诈，甚至发起蠕虫攻击等。</p>
+</blockquote>
+<h4 id="XSS分类"><a href="#XSS分类" class="headerlink" title="XSS分类"></a>XSS分类</h4><h5 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h5><ul>
+<li>把url参数中原来的字符串替换成脚本执行</li>
+<li>反射型 XSS 漏洞常见于通过 URL 传递参数的功能，如网站搜索、跳转等。由于需要用户主动打开恶意的 URL 才能生效，攻击者往往会结合多种手段诱导用户点击。</li>
+<li>POST 的内容也可以触发反射型 XSS，只不过其触发条件比较苛刻（需要构造表单提交页面，并引导用户点击），所以非常少见。</li>
+</ul>
+<h5 id="DOM型XSS"><a href="#DOM型XSS" class="headerlink" title="DOM型XSS"></a>DOM型XSS</h5><ul>
+<li>unicode码伪装脚本代码，然后利用Jquery的append方法执行(Jquery会在将append元素变为fragment的时候，找到其中的script标签，再使用eval执行一遍。其使用的方式是innerHTML,而innerHTML会将unicode码转换为字符实体的。)</li>
+<li>利用img的onerror事件注入恶意脚本</li>
+<li>img标签用unicode伪装然后用innerHTML添加到页面执行</li>
+</ul>
+<h5 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h5><ul>
+<li>恶意脚本代码，被服务端存储，当浏览器请求数据时，脚本从服务器传回并执行</li>
+</ul>
+<h4 id="XSS攻击防御"><a href="#XSS攻击防御" class="headerlink" title="XSS攻击防御"></a>XSS攻击防御</h4><ul>
+<li>转义页面上的输入内容和输出内容中的&lt;&gt;</li>
+<li>转义输出字符串中unicode码的 \ 反斜杠(json转义)</li>
+<li>url获取的信息最好从后端获取，然后前端转义后输出</li>
+<li>设置cookie的HttpOnly属性，让js无法进行读写</li>
+<li>使用第三方扫描工具检测</li>
+</ul>
+<h3 id="CSRF攻击-跨站请求伪造"><a href="#CSRF攻击-跨站请求伪造" class="headerlink" title="CSRF攻击(跨站请求伪造)"></a>CSRF攻击(跨站请求伪造)</h3><blockquote>
+<p>CSRF（Cross-site request forgery）跨站请求伪造：攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。</p>
+</blockquote>
+<h4 id="典型的CSRF攻击流程"><a href="#典型的CSRF攻击流程" class="headerlink" title="典型的CSRF攻击流程"></a>典型的CSRF攻击流程</h4><ul>
+<li>1.受害者登录A站点，并保留了登录凭证（Cookie）。</li>
+<li>2.攻击者诱导受害者访问了站点B。</li>
+<li>3.站点B向站点A发送了一个请求，浏览器会默认携带站点A的Cookie信息。</li>
+<li>4.站点A接收到请求后，对请求进行验证，并确认是受害者的凭证，误以为是无辜的受害者发送的请求。</li>
+<li>5.站点A以受害者的名义执行了站点B的请求。</li>
+<li>6.攻击完成，攻击者在受害者不知情的情况下，冒充受害者完成了攻击。</li>
+</ul>
+<p>跨站请求可以用各种方式：图片URL、超链接、CORS、Form提交等等(来源不明的链接，不要点击)</p>
+<h4 id="CSRF攻击防御"><a href="#CSRF攻击防御" class="headerlink" title="CSRF攻击防御"></a>CSRF攻击防御</h4><h5 id="添加验证码-体验不好"><a href="#添加验证码-体验不好" class="headerlink" title="添加验证码(体验不好)"></a>添加验证码(体验不好)</h5><p>在一些敏感操作的地方添加验证码验证，如：转账、交易等操作。但是会中断用户的操作，用户体验不好。</p>
+<h5 id="检验Referer-请求来源"><a href="#检验Referer-请求来源" class="headerlink" title="检验Referer(请求来源)"></a>检验Referer(请求来源)</h5><p><code>Referer</code> 可以作为一种辅助手段，来判断请求的来源是否是安全的，但是鉴于 <code>Referer</code> 本身是可以被修改的，所以不安全。</p>
+<h5 id="使用Token-主流"><a href="#使用Token-主流" class="headerlink" title="使用Token(主流)"></a>使用Token(主流)</h5><p>用户请求携带一个CSRF攻击者无法获取到的Token。服务器通过校验请求是否携带正确的Token，来把正常的请求和攻击的请求区分开。跟验证码类似，只是用户无感知。</p>
+<ul>
+<li>服务端给用户生成一个token，加密后传递给用户</li>
+<li>用户在提交请求时，需要携带这个token</li>
+<li>服务端验证token是否正确</li>
+</ul>
+<h5 id="Samesite-Cookie属性"><a href="#Samesite-Cookie属性" class="headerlink" title="Samesite Cookie属性"></a>Samesite Cookie属性</h5><p>为了从源头上解决这个问题，Google起草了一份草案来改进HTTP协议，为Set-Cookie响应头新增Samesite属性，它用来标明这个 Cookie是个“同站 Cookie”，同站Cookie只能作为第一方Cookie，不能作为第三方Cookie，Samesite 有两个属性值，分别是 Strict 和 Lax。部署简单，并能有效防御CSRF攻击，但是存在兼容性问题。</p>
+<ul>
+<li><code>Samesite=Strict</code> 被称为是严格模式,表明这个 Cookie 在任何情况都不可能作为第三方的 Cookie，有能力阻止所有CSRF攻击。此时，我们在B站点下发起对A站点的任何请求，A站点的 Cookie 都不会包含在cookie请求头中。</li>
+<li><code>Samesite=Lax</code> 被称为是宽松模式，与 Strict 相比，放宽了限制，允许发送安全 HTTP 方法带上 Cookie，如 <code>Get</code> / <code>OPTIONS</code> 、<code>HEAD</code> 请求.但是不安全 HTTP 方法，如： <code>POST</code>, <code>PUT</code>, <code>DELETE</code> 请求时，不能作为第三方链接的 Cookie。</li>
+</ul>
+<h3 id="点击劫持"><a href="#点击劫持" class="headerlink" title="点击劫持"></a>点击劫持</h3><p>原理：利用了视觉欺骗</p>
+<h4 id="攻击方式"><a href="#攻击方式" class="headerlink" title="攻击方式"></a>攻击方式</h4><ul>
+<li>攻击者使用一个透明的iframe，覆盖在一个网页上，然后诱使用户在该页面上进行操作，此时用户将在不知情的情况下操作的都是透明的iframe页面，而不是显示的页面</li>
+<li>攻击者使用一张图片覆盖在网页，遮挡网页原有位置的含义</li>
+</ul>
+<h4 id="点击劫持防御"><a href="#点击劫持防御" class="headerlink" title="点击劫持防御"></a>点击劫持防御</h4><ul>
+<li>Frame busting</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( top.location != <span class="built_in">window</span>.location )&#123;</span><br><span class="line">    top.location = <span class="built_in">window</span>.location</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注: HTML5中iframe的 sandbox 属性、IE中iframe的security 属性等，都可以限制iframe页面中的JavaScript脚本执行，从而可以使得 frame busting 失效。</p>
+<ul>
+<li>X-Frame-Options</li>
+</ul>
+<p>X-FRAME-OPTIONS是微软提出的一个http头，专门用来防御利用iframe嵌套的点击劫持攻击。并且在IE8、Firefox3.6、Chrome4以上的版本均能很好的支持。可以设置为以下值:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DENY: 拒绝任何域加载</span><br><span class="line">SAMEORIGIN: 允许同源域下加载</span><br><span class="line">ALLOW-FROM: 可以定义允许frame加载的页面地址</span><br></pre></td></tr></table></figure>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#面试题" >
+    <span class="tag-code">面试题</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/08/23/interview-es6/">
+        <span class="nav-arrow">← </span>
+        
+          面试题系列之es6/7
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/09/24/interview-architecture/">
+        
+          面试题系列之前端架构设计
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#前端安全"><span class="toc-nav-text">前端安全</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#浏览器安全"><span class="toc-nav-text">浏览器安全</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#同源策略"><span class="toc-nav-text">同源策略</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#浏览器沙箱"><span class="toc-nav-text">浏览器沙箱</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#恶意网址拦截"><span class="toc-nav-text">恶意网址拦截</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#XSS攻击-跨站脚本攻击"><span class="toc-nav-text">XSS攻击(跨站脚本攻击)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#XSS分类"><span class="toc-nav-text">XSS分类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#反射型XSS"><span class="toc-nav-text">反射型XSS</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#DOM型XSS"><span class="toc-nav-text">DOM型XSS</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#存储型XSS"><span class="toc-nav-text">存储型XSS</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#XSS攻击防御"><span class="toc-nav-text">XSS攻击防御</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CSRF攻击-跨站请求伪造"><span class="toc-nav-text">CSRF攻击(跨站请求伪造)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#典型的CSRF攻击流程"><span class="toc-nav-text">典型的CSRF攻击流程</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#CSRF攻击防御"><span class="toc-nav-text">CSRF攻击防御</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#添加验证码-体验不好"><span class="toc-nav-text">添加验证码(体验不好)</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#检验Referer-请求来源"><span class="toc-nav-text">检验Referer(请求来源)</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#使用Token-主流"><span class="toc-nav-text">使用Token(主流)</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Samesite-Cookie属性"><span class="toc-nav-text">Samesite Cookie属性</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#点击劫持"><span class="toc-nav-text">点击劫持</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#攻击方式"><span class="toc-nav-text">攻击方式</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#点击劫持防御"><span class="toc-nav-text">点击劫持防御</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2019/08/23/interview-security/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+  <script>
+    var gitmentConfig = "zhugexiaoxiaoliang";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "面试题系列之前端安全",
+        owner: "zhugexiaoxiaoliang",
+        repo: "https://zhugexiaoxiaoliang.github.io",
+        oauth: {
+          client_id: "a893559541b0f60577b0",
+          client_secret: "793cda806874db8a8f81e91b137427107b4f95af"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  </script>
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2020 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Website by <a href="https://github.com/zhugexiaoxiaoliang" target="_blank" rel="noopener">MaReine</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

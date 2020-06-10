@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="记录前端学习生涯的点点滴滴">
+  <meta name="keyword" content="前端,es6,html5,css3,js,webpack,vue">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      node版本管理(nvm for windows) | 前端博客
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    
+<script src="/js/qrious.js"></script>
+
+  
+  
+    
+<script src="/js/gitment.js"></script>
+
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>前端博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">开源项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">开源项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>node版本管理(nvm for windows)</h2>
+  <p class="post-date">2018-03-10</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="nvm-for-windows"><a href="#nvm-for-windows" class="headerlink" title="nvm for windows"></a>nvm for windows</h2><h3 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h3><p><a href="https://github.com/coreybutler/nvm-windows/releases" target="_blank" rel="noopener">传送门</a></p>
+<p>安装前，这里有一点需要注意，如果以前安装过node，需要先卸载，并且要把目录清理干净。下面是官方给的说明：</p>
+<blockquote>
+<p>It comes with an installer (and uninstaller), because getting it should be easy. Please note, you need to uninstall any existing versions of node.js before installing NVM for Windows. Also delete any existing nodejs installation directories (e.g., “C:\Program Files\nodejs”) that might remain. NVM’s generated symlink will not overwrite an existing (even empty) installation directory.<br>You should also delete the existing npm install location (e.g. “C:\Users&lt;user&gt;\AppData\Roaming\npm”) so that the nvm install location will be correctly used instead. After install, reinstalling global utilities (e.g. gulp) will have to be done for each installed version of node:</p>
+</blockquote>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p><strong>注意：</strong> 为了防止<code>node</code>和<code>npm</code>安装失败，需要配置<code>node</code>和<code>npm</code>的下载地址指向淘宝的镜像，打开nvm安装路径下的settings.txt文件修改为：</p>
+<blockquote>
+<p>root: D:\works_install\nvm<br>path: D:\works_install\node<br>node_mirror: <a href="https://npm.taobao.org/mirrors/node/" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/node/</a><br>npm_mirror: <a href="https://npm.taobao.org/mirrors/npm/" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/npm/</a></p>
+</blockquote>
+<h3 id="查看当前已经安装的nodejs版本"><a href="#查看当前已经安装的nodejs版本" class="headerlink" title="查看当前已经安装的nodejs版本"></a>查看当前已经安装的nodejs版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">λ nvm ls</span><br><span class="line"></span><br><span class="line">    10.7.0</span><br><span class="line">  * 8.11.3 (Currently using 64-bit executable)</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看可以安装的nodejs版本"><a href="#查看可以安装的nodejs版本" class="headerlink" title="查看可以安装的nodejs版本"></a>查看可以安装的nodejs版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">λ nvm list available</span><br><span class="line"></span><br><span class="line">| CURRENT | LTS    | OLD STABLE | OLD UNSTABLE |</span><br><span class="line">| ------- | ------ | ---------- | ------------ |</span><br><span class="line">| 10.8.0  | 8.11.3 | 0.12.18    | 0.11.16      |</span><br><span class="line">| 10.7.0  | 8.11.2 | 0.12.17    | 0.11.15      |</span><br><span class="line">| 10.6.0  | 8.11.1 | 0.12.16    | 0.11.14      |</span><br><span class="line">| 10.5.0  | 8.11.0 | 0.12.15    | 0.11.13      |</span><br><span class="line">| 10.4.1  | 8.10.0 | 0.12.14    | 0.11.12      |</span><br><span class="line">| 10.4.0  | 8.9.4  | 0.12.13    | 0.11.11      |</span><br><span class="line">| 10.3.0  | 8.9.3  | 0.12.12    | 0.11.10      |</span><br><span class="line">| 10.2.1  | 8.9.2  | 0.12.11    | 0.11.9       |</span><br><span class="line">| 10.2.0  | 8.9.1  | 0.12.10    | 0.11.8       |</span><br><span class="line">| 10.1.0  | 8.9.0  | 0.12.9     | 0.11.7       |</span><br><span class="line">| 10.0.0  | 6.14.3 | 0.12.8     | 0.11.6       |</span><br><span class="line">| 9.11.2  | 6.14.2 | 0.12.7     | 0.11.5       |</span><br><span class="line">| 9.11.1  | 6.14.1 | 0.12.6     | 0.11.4       |</span><br><span class="line">| 9.11.0  | 6.14.0 | 0.12.5     | 0.11.3       |</span><br><span class="line">| 9.10.1  | 6.13.1 | 0.12.4     | 0.11.2       |</span><br><span class="line">| 9.10.0  | 6.13.0 | 0.12.3     | 0.11.1       |</span><br><span class="line">| 9.9.0   | 6.12.3 | 0.12.2     | 0.11.0       |</span><br><span class="line">| 9.8.0   | 6.12.2 | 0.12.1     | 0.9.12       |</span><br><span class="line">| 9.7.1   | 6.12.1 | 0.12.0     | 0.9.11       |</span><br><span class="line">| 9.7.0   | 6.12.0 | 0.10.48    | 0.9.10       |</span><br><span class="line"></span><br><span class="line">This is a partial list. For a complete list, visit https:&#x2F;&#x2F;nodejs.org&#x2F;download&#x2F;release</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装指定版本的node"><a href="#安装指定版本的node" class="headerlink" title="安装指定版本的node"></a>安装指定版本的node</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">λ nvm install 10.8.0</span><br><span class="line">Downloading node.js version 10.8.0 (64-bit)...</span><br><span class="line">Complete</span><br><span class="line">Creating D:\works_install\nvm\temp</span><br><span class="line"></span><br><span class="line">Downloading npm version 6.2.0... Download failed. Rolling Back.</span><br><span class="line">Rollback failed. remove D:\works_install\nvm\temp\npm-v6.2.0.zip: The process cannot access the file because it is being used by another process.</span><br><span class="line">Could not download npm for node v10.8.0.</span><br><span class="line">Please visit https:&#x2F;&#x2F;github.com&#x2F;npm&#x2F;npm&#x2F;releases&#x2F;tag&#x2F;v6.2.0 to download npm.</span><br><span class="line">It should be extracted to D:\works_install\nvm\v10.8.0</span><br></pre></td></tr></table></figure>
+
+<p>报错了–！<code>npm</code>下载失败。</p>
+<p>原因：因为上面用的是淘宝的镜像，安装的<code>10.8.0</code>是最新版本，淘宝的npm还没有收录，所以安装失败</p>
+<p>解决：先找到nvm的安装路径，把10.8.0的文件夹彻底删除。然后安装其它版本的就OK了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">λ nvm install 10.6.0</span><br><span class="line">Downloading node.js version 10.6.0 (64-bit)...</span><br><span class="line">Complete</span><br><span class="line">Downloading npm version 6.1.0... Complete</span><br><span class="line">Installing npm v6.1.0...</span><br><span class="line"></span><br><span class="line">Installation complete. If you want to use this version, type</span><br><span class="line"></span><br><span class="line">nvm use 10.6.0</span><br></pre></td></tr></table></figure>
+
+<p>安装成功，再次查看已安装的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">λ nvm ls</span><br><span class="line"></span><br><span class="line">    10.7.0</span><br><span class="line">    10.6.0</span><br><span class="line">  * 8.11.3 (Currently using 64-bit executable)</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用指定版本的node"><a href="#使用指定版本的node" class="headerlink" title="使用指定版本的node"></a>使用指定版本的node</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">λ nvm use 10.6.0</span><br><span class="line">Now using node v10.6.0 (64-bit)</span><br><span class="line"></span><br><span class="line">λ nvm ls</span><br><span class="line"></span><br><span class="line">    10.7.0</span><br><span class="line">  * 10.6.0 (Currently using 64-bit executable)</span><br><span class="line">    8.11.3</span><br><span class="line"></span><br><span class="line">λ npm -v</span><br><span class="line">6.1.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除指定版本的node"><a href="#删除指定版本的node" class="headerlink" title="删除指定版本的node"></a>删除指定版本的node</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">λ nvm uninstall 10.6.0</span><br><span class="line">Uninstalling node v10.6.0... done</span><br><span class="line"></span><br><span class="line">λ nvm ls</span><br><span class="line"></span><br><span class="line">    10.7.0</span><br><span class="line">  * 8.11.3 (Currently using 64-bit executable)</span><br></pre></td></tr></table></figure>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#开发环境" >
+    <span class="tag-code">开发环境</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/03/10/cmder/">
+        <span class="nav-arrow">← </span>
+        
+          cmder-for-windows
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/03/10/nrm/">
+        
+          npm镜像管理(nrm)
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#nvm-for-windows"><span class="toc-nav-text">nvm for windows</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#下载与安装"><span class="toc-nav-text">下载与安装</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#使用"><span class="toc-nav-text">使用</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#查看当前已经安装的nodejs版本"><span class="toc-nav-text">查看当前已经安装的nodejs版本</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#查看可以安装的nodejs版本"><span class="toc-nav-text">查看可以安装的nodejs版本</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#安装指定版本的node"><span class="toc-nav-text">安装指定版本的node</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#使用指定版本的node"><span class="toc-nav-text">使用指定版本的node</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#删除指定版本的node"><span class="toc-nav-text">删除指定版本的node</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/03/10/nvm/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+  <script>
+    var gitmentConfig = "zhugexiaoxiaoliang";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "node版本管理(nvm for windows)",
+        owner: "zhugexiaoxiaoliang",
+        repo: "https://zhugexiaoxiaoliang.github.io",
+        oauth: {
+          client_id: "a893559541b0f60577b0",
+          client_secret: "793cda806874db8a8f81e91b137427107b4f95af"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  </script>
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2020 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Website by <a href="https://github.com/zhugexiaoxiaoliang" target="_blank" rel="noopener">MaReine</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

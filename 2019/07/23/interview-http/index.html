@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="记录前端学习生涯的点点滴滴">
+  <meta name="keyword" content="前端,es6,html5,css3,js,webpack,vue">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      面试题系列之网络协议-Http | 前端博客
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    
+<script src="/js/qrious.js"></script>
+
+  
+  
+    
+<script src="/js/gitment.js"></script>
+
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>前端博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">开源项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">开源项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>面试题系列之网络协议-Http</h2>
+  <p class="post-date">2019-07-23</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="HTTP-报文结构是怎样的"><a href="#HTTP-报文结构是怎样的" class="headerlink" title="HTTP 报文结构是怎样的"></a>HTTP 报文结构是怎样的</h3><p>TCP在传输的时候分为两个部分：TCP头和数据部分。</p>
+<p>HTTP是<code>header</code> + <code>body</code>的结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">起始行 + 头部 + 空行 + 实体</span><br></pre></td></tr></table></figure>
+
+<h4 id="起始行"><a href="#起始行" class="headerlink" title="起始行"></a>起始行</h4><p><strong>请求报文：</strong> 方法 + 路径 + HTTP版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F;home HTTP&#x2F;1.1</span><br></pre></td></tr></table></figure>
+
+<p><strong>响应报文：</strong> HTTP版本 + 状态码 + 消息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTTP&#x2F;1.1 200 OK</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong></p>
+<ul>
+<li><p>请求报文的起始行也叫做<code>请求行</code>，响应报文的起始行也叫做<code>状态行</code></p>
+</li>
+<li><p>起始行严格遵循<code>ABNF</code>语法规范：起始行中，每两个部分之间用空格隔开，最后一个部分后面应该接一个换行</p>
+</li>
+</ul>
+<h4 id="头部"><a href="#头部" class="headerlink" title="头部"></a>头部</h4><p><strong>请求头</strong>在报文中的位置<br><img src="/images/http_head1.png" alt="image"></p>
+<p><strong>响应头</strong>在报文中的位置<br><img src="/images/http_head2.png" alt="image"></p>
+<p><strong>注：</strong>头部字段的格式</p>
+<ul>
+<li>字段名不区分大小写</li>
+<li>字段名不允许出现空格，不可以出现下划线</li>
+<li>字段名后面必须紧接着:</li>
+</ul>
+<h4 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h4><p>用来区分<code>头部</code>和<code>实体</code>，如果在头部中间故意加一个空行那么空行后的内容全部被视为实体。</p>
+<h4 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h4><p><code>body</code>部分，就是具体的数据，请求报文对应<code>请求体</code>，响应报文对应<code>响应体</code>。</p>
+<h3 id="HTTP的请求方法"><a href="#HTTP的请求方法" class="headerlink" title="HTTP的请求方法"></a>HTTP的请求方法</h3><p><code>HTTP/1.1</code>规定了以下请求方法(注意，都是大写)：</p>
+<ul>
+<li>GET:通常用来获取资源</li>
+<li>HEAD:获取资源的元信息</li>
+<li>POST:提交数据或上传数据</li>
+<li>PUT:修改数据</li>
+<li>DELETE:删除资源</li>
+<li>CONNECT:建立连接隧道，用于代理服务器</li>
+<li>OPTIONS:列出可对资源实行的请求方法，用来跨域请求</li>
+<li>TRACE:追踪请求-响应的传输路径</li>
+</ul>
+<p><strong>GET和POST有什么区别？</strong></p>
+<ul>
+<li>从<strong>缓存</strong>的角度，GET请求会被浏览器主动缓存下来，留下历史记录，而POST默认不会</li>
+<li>从<strong>编码</strong>的角度，GET只能进行URL编码，只能接收ASCII字符，而POST没有限制。</li>
+<li>从<strong>参数</strong>的角度，GET一般放在URL中，因此是不安全的，POST放在请求体中，更适合传输敏感信息。</li>
+<li>从<strong>幂等性</strong>的角度，GET是幂等的，而POST不是。（幂等表示执行相同的操作，结果也是相同的）</li>
+<li>从<strong>TCP</strong>的角度，GET请求会把请求报文一次性发出去，而POST会分为两个TCP数据包，首先发header部分，如果服务器响应100(continue),然后发body部分。(火狐浏览器除外，它的 POST 请求只发一个 TCP 包)</li>
+</ul>
+<h3 id="URI是什么？与URL有什么区别？如何理解URI"><a href="#URI是什么？与URL有什么区别？如何理解URI" class="headerlink" title="URI是什么？与URL有什么区别？如何理解URI"></a>URI是什么？与URL有什么区别？如何理解URI</h3><p><strong>URI</strong>(Uniform Resource Identifier)也就是<code>统一资源标识符</code>,它的作用就是区分互联网上不同的资源。</p>
+<p><strong>URL</strong>就是我们常说的网址，实际上<code>URI</code>包含了<code>URN</code>和<code>URL</code>两个部分。</p>
+<h4 id="URI的结构"><a href="#URI的结构" class="headerlink" title="URI的结构"></a>URI的结构</h4><p><img src="/images/http_uri.png" alt="image"></p>
+<ul>
+<li>scheme 表示协议名，比如http, https, file等等。后面必须和://连在一起。</li>
+<li>user:passwd@ 表示登录主机时的用户信息，不过很不安全，不推荐使用，也不常用。</li>
+<li>host:port 表示主机名和端口。</li>
+<li>path 表示请求路径，标记资源所在位置。</li>
+<li>query 表示查询参数，以?开头，为key=val这种形式，多个键值对之间用&amp;隔开。</li>
+<li>fragment 表示 URI 所定位的资源内的一个锚点，浏览器可以根据这个锚点跳转到对应的位置。</li>
+</ul>
+<p>举个例子：<code>https://www.baidu.com/index?type=HTTPS&amp;port=443#1</code></p>
+<ul>
+<li>scheme部分 https</li>
+<li>host:port部分 <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> （http默认端口80，https默认端口443）</li>
+<li>path部分 /index</li>
+<li>query部分 ?type=HTTPS&amp;port=443</li>
+<li>fragment部分 #1</li>
+</ul>
+<h4 id="URI编码"><a href="#URI编码" class="headerlink" title="URI编码"></a>URI编码</h4><p>URI使用<code>ASCII</code>编码，ASCII之外的字符和一部分符号的界定符是不支持显示的，如果不处理就会导致解析出错。</p>
+<p>因此，URI 引入了编码机制，将所有非 ASCII 码字符和界定符转为十六进制字节值，然后在前面加个<code>%</code>。</p>
+<p>如，空格被转义成了%20，前端被转义成了%E5%89%8D%E7%AB%AF。</p>
+<h3 id="说说HTTP状态码"><a href="#说说HTTP状态码" class="headerlink" title="说说HTTP状态码"></a>说说HTTP状态码</h3><p>RFC 规定 HTTP 的状态码为三位数，被分为五类:</p>
+<ul>
+<li>1xx: 表示目前是协议处理的中间状态，还需要后续操作。</li>
+<li>2xx: 表示成功状态。</li>
+<li>3xx: 重定向状态，资源位置发生变动，需要重新请求。</li>
+<li>4xx: 请求报文有误。</li>
+<li>5xx: 服务器端发生错误。</li>
+</ul>
+<h4 id="1XX"><a href="#1XX" class="headerlink" title="1XX"></a>1XX</h4><ul>
+<li>101 Switching Protocols。在HTTP升级为WebSocket的时候，如果服务器同意变更，就会发送状态码 101。</li>
+</ul>
+<h4 id="2XX"><a href="#2XX" class="headerlink" title="2XX"></a>2XX</h4><ul>
+<li>200 OK 成功状态码,通常在响应体中放有数据。(最常见)</li>
+<li>204 No Content 含义与 200 相同，但响应头后没有 body 数据。</li>
+<li>206 Partial Content 顾名思义，表示部分内容，它的使用场景为 HTTP 分块下载和断点续传，当然也会带上相应的响应头字段Content-Range。</li>
+</ul>
+<h4 id="3XX"><a href="#3XX" class="headerlink" title="3XX"></a>3XX</h4><ul>
+<li>301 Moved Permanently 即永久重定向</li>
+<li>302 Found 即临时重定向</li>
+<li>304 Not Modified: 当协商缓存命中时会返回这个状态码。详见浏览器缓存</li>
+</ul>
+<h4 id="4XX"><a href="#4XX" class="headerlink" title="4XX"></a>4XX</h4><h4 id="5XX"><a href="#5XX" class="headerlink" title="5XX"></a>5XX</h4></section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#面试题" >
+    <span class="tag-code">面试题</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/06/01/interview-design-pattern/">
+        <span class="nav-arrow">← </span>
+        
+          面试题系列之设计模式
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/07/28/interview-TCP/">
+        
+          面试题系列之网络协议-TCP
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTTP"><span class="toc-nav-text">HTTP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#HTTP-报文结构是怎样的"><span class="toc-nav-text">HTTP 报文结构是怎样的</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#起始行"><span class="toc-nav-text">起始行</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#头部"><span class="toc-nav-text">头部</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#空行"><span class="toc-nav-text">空行</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#实体"><span class="toc-nav-text">实体</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#HTTP的请求方法"><span class="toc-nav-text">HTTP的请求方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#URI是什么？与URL有什么区别？如何理解URI"><span class="toc-nav-text">URI是什么？与URL有什么区别？如何理解URI</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#URI的结构"><span class="toc-nav-text">URI的结构</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#URI编码"><span class="toc-nav-text">URI编码</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#说说HTTP状态码"><span class="toc-nav-text">说说HTTP状态码</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1XX"><span class="toc-nav-text">1XX</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2XX"><span class="toc-nav-text">2XX</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3XX"><span class="toc-nav-text">3XX</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4XX"><span class="toc-nav-text">4XX</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#5XX"><span class="toc-nav-text">5XX</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2019/07/23/interview-http/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+  <script>
+    var gitmentConfig = "zhugexiaoxiaoliang";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "面试题系列之网络协议-Http",
+        owner: "zhugexiaoxiaoliang",
+        repo: "https://zhugexiaoxiaoliang.github.io",
+        oauth: {
+          client_id: "a893559541b0f60577b0",
+          client_secret: "793cda806874db8a8f81e91b137427107b4f95af"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  </script>
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2020 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Website by <a href="https://github.com/zhugexiaoxiaoliang" target="_blank" rel="noopener">MaReine</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

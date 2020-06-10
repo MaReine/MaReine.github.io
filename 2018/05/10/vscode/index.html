@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="记录前端学习生涯的点点滴滴">
+  <meta name="keyword" content="前端,es6,html5,css3,js,webpack,vue">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      VisualStudioCode使用手册 | 前端博客
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    
+<script src="/js/qrious.js"></script>
+
+  
+  
+    
+<script src="/js/gitment.js"></script>
+
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>前端博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">开源项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">开源项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>VisualStudioCode使用手册</h2>
+  <p class="post-date">2018-05-10</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="VisualStudioCode"><a href="#VisualStudioCode" class="headerlink" title="VisualStudioCode"></a>VisualStudioCode</h2><p>前端开发利器</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载地址<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">传送门</a></p>
+<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><p>彻底卸载</p>
+<blockquote>
+<ul>
+<li><code>win + r</code> 打开运行</li>
+<li><code>%appdata%</code> 回车</li>
+<li>删除 <code>Code</code> 和 <code>Visual Studio Code</code> 文件夹</li>
+<li>地址栏输入 <code>%userprofile%</code> 回车</li>
+<li>删除 <code>.vscode</code> 文件夹</li>
+</ul>
+</blockquote>
+<h3 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h3><p>待更新…</p>
+<h3 id="常用插件安装"><a href="#常用插件安装" class="headerlink" title="常用插件安装"></a>常用插件安装</h3><h4 id="Chinese-Simplified-Language-Pack-for-Visual-Studio-Code"><a href="#Chinese-Simplified-Language-Pack-for-Visual-Studio-Code" class="headerlink" title="Chinese (Simplified) Language Pack for Visual Studio Code"></a>Chinese (Simplified) Language Pack for Visual Studio Code</h4><p>适用于 VS Code 的中文（简体）语言包</p>
+<h4 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h4><p>语法规范检测工具</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">"editor.codeActionsOnSave": &#123;</span><br><span class="line">  "source.fixAll": true</span><br><span class="line">&#125;,</span><br><span class="line">"eslint.validate": [</span><br><span class="line">  "javascript",</span><br><span class="line">  "vue",</span><br><span class="line">  <span class="string">"html"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h4 id="StandardJS-JavaScript-Standard-Style"><a href="#StandardJS-JavaScript-Standard-Style" class="headerlink" title="StandardJS - JavaScript Standard Style"></a>StandardJS - JavaScript Standard Style</h4><p>js Standard 规范</p>
+<h4 id="Vetur"><a href="#Vetur" class="headerlink" title="Vetur"></a>Vetur</h4><p>vue 代码片段工具</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"vetur.format.defaultFormatter.js": "none"</span><br></pre></td></tr></table></figure>
+
+<h4 id="HTML-CSS-Support"><a href="#HTML-CSS-Support" class="headerlink" title="HTML CSS Support"></a>HTML CSS Support</h4><p>让 html 标签上写 class 智能提示当前项目所支持的样式</p>
+<h4 id="Debugger-for-Chrome"><a href="#Debugger-for-Chrome" class="headerlink" title="Debugger for Chrome"></a>Debugger for Chrome</h4><p>让 vscode 映射 chrome 的 debug 功能，静态页面都可以用 vscode 来打断点调试</p>
+<h4 id="vscode-icons"><a href="#vscode-icons" class="headerlink" title="vscode-icons"></a>vscode-icons</h4><p>让 vscode 资源树目录加上图标</p>
+<h4 id="Material-Icon-Theme"><a href="#Material-Icon-Theme" class="headerlink" title="Material Icon Theme"></a>Material Icon Theme</h4><p>好看的 icons 主题</p>
+<h4 id="Path-Intellisense"><a href="#Path-Intellisense" class="headerlink" title="Path Intellisense"></a>Path Intellisense</h4><p>自动路径补全</p>
+<h4 id="koroFileHeader"><a href="#koroFileHeader" class="headerlink" title="koroFileHeader"></a>koroFileHeader</h4><p>在 vscode 中用于生成文件头部注释和函数注释的插件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"fileheader.customMade": &#123;</span><br><span class="line">  "Description": "",</span><br><span class="line">  "Author": "wangliang",</span><br><span class="line">  "Date": "Do not edit"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Atuo-Rename-Tag"><a href="#Atuo-Rename-Tag" class="headerlink" title="Atuo Rename Tag"></a>Atuo Rename Tag</h4><p>修改 html 标签，自动帮你完成尾部闭合标签的同步修改</p>
+<h4 id="Bracket-Pair-Colorizer"><a href="#Bracket-Pair-Colorizer" class="headerlink" title="Bracket Pair Colorizer"></a>Bracket Pair Colorizer</h4><p>让括号拥有独立的颜色，易于区分。可以配合任意主题使用。</p>
+<h4 id="IntelliSense-for-CSS-class-names"><a href="#IntelliSense-for-CSS-class-names" class="headerlink" title="IntelliSense for CSS class names"></a>IntelliSense for CSS class names</h4><p>智能提示 css 的 class 名</p>
+<h4 id="Image-Preview"><a href="#Image-Preview" class="headerlink" title="Image Preview"></a>Image Preview</h4><p>鼠标移到路径里显示图像预览</p>
+<h4 id="JavaScript-ES6-code-snippets"><a href="#JavaScript-ES6-code-snippets" class="headerlink" title="JavaScript (ES6) code snippets"></a>JavaScript (ES6) code snippets</h4><p>es6 代码片段</p>
+<h4 id="markdownlint"><a href="#markdownlint" class="headerlink" title="markdownlint"></a>markdownlint</h4><p>markdown 语法检查</p>
+<h4 id="One-Dark-Pro"><a href="#One-Dark-Pro" class="headerlink" title="One Dark Pro"></a>One Dark Pro</h4><p>长时间的编码，暗色调的编码环境更不容易让视力疲劳，而且也可以让自己更加专注。</p>
+<h4 id="Code-Spell-Checker"><a href="#Code-Spell-Checker" class="headerlink" title="Code Spell Checker"></a>Code Spell Checker</h4><p>单词拼写检查</p>
+<h4 id="settings-sync"><a href="#settings-sync" class="headerlink" title="settings sync"></a>settings sync</h4><p>同步vscode插件和配置</p>
+<h5 id="获取-git-token"><a href="#获取-git-token" class="headerlink" title="获取 git token"></a>获取 git token</h5><ul>
+<li>Settings -&gt; Personal access tokens -&gt; Generate new token</li>
+<li>Note:vscode-settings &amp;&amp; Select scopes:gist -&gt; Generate token</li>
+<li>获得 token：<code>8f107e3efe916bfd2639c1ec57e6a193beefd2c4</code></li>
+</ul>
+<h5 id="获取-gist-Id"><a href="#获取-gist-Id" class="headerlink" title="获取 gist Id"></a>获取 gist Id</h5><ul>
+<li>Your gists -&gt; 新建gist -&gt; 随便输 -&gt; Create secret gist</li>
+<li>在地址栏获得 gist Id: <code>a6fa20bed2e388f2efd5e45725c275a7</code></li>
+</ul>
+<h5 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h5><ul>
+<li><code>shift+ctrl+p</code> 搜 <code>sync</code></li>
+<li><code>shift+alt+u</code> 上传</li>
+<li><code>shift+alt+d</code> 下载</li>
+</ul>
+<h4 id="Auto-Close-Tag"><a href="#Auto-Close-Tag" class="headerlink" title="Auto Close Tag"></a>Auto Close Tag</h4><p>自动闭合标签</p>
+<h4 id="Markdown-All-in-One"><a href="#Markdown-All-in-One" class="headerlink" title="Markdown All in One"></a>Markdown All in One</h4><p>Markdown 辅助工具</p>
+<h4 id="Markdown-Preview-Enhanced"><a href="#Markdown-Preview-Enhanced" class="headerlink" title="Markdown Preview Enhanced"></a>Markdown Preview Enhanced</h4><p>Markdown 实时预览</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#开发工具" >
+    <span class="tag-code">开发工具</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/04/24/git/">
+        <span class="nav-arrow">← </span>
+        
+          Git使用手册
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/01/20/resume/">
+        
+          简历
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#VisualStudioCode"><span class="toc-nav-text">VisualStudioCode</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#安装"><span class="toc-nav-text">安装</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#卸载"><span class="toc-nav-text">卸载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#个性化配置"><span class="toc-nav-text">个性化配置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#常用插件安装"><span class="toc-nav-text">常用插件安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Chinese-Simplified-Language-Pack-for-Visual-Studio-Code"><span class="toc-nav-text">Chinese (Simplified) Language Pack for Visual Studio Code</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ESLint"><span class="toc-nav-text">ESLint</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#StandardJS-JavaScript-Standard-Style"><span class="toc-nav-text">StandardJS - JavaScript Standard Style</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Vetur"><span class="toc-nav-text">Vetur</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#HTML-CSS-Support"><span class="toc-nav-text">HTML CSS Support</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Debugger-for-Chrome"><span class="toc-nav-text">Debugger for Chrome</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#vscode-icons"><span class="toc-nav-text">vscode-icons</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Material-Icon-Theme"><span class="toc-nav-text">Material Icon Theme</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Path-Intellisense"><span class="toc-nav-text">Path Intellisense</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#koroFileHeader"><span class="toc-nav-text">koroFileHeader</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Atuo-Rename-Tag"><span class="toc-nav-text">Atuo Rename Tag</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Bracket-Pair-Colorizer"><span class="toc-nav-text">Bracket Pair Colorizer</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#IntelliSense-for-CSS-class-names"><span class="toc-nav-text">IntelliSense for CSS class names</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Image-Preview"><span class="toc-nav-text">Image Preview</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#JavaScript-ES6-code-snippets"><span class="toc-nav-text">JavaScript (ES6) code snippets</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#markdownlint"><span class="toc-nav-text">markdownlint</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#One-Dark-Pro"><span class="toc-nav-text">One Dark Pro</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Code-Spell-Checker"><span class="toc-nav-text">Code Spell Checker</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#settings-sync"><span class="toc-nav-text">settings sync</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#获取-git-token"><span class="toc-nav-text">获取 git token</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#获取-gist-Id"><span class="toc-nav-text">获取 gist Id</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#常用快捷键"><span class="toc-nav-text">常用快捷键</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Auto-Close-Tag"><span class="toc-nav-text">Auto Close Tag</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Markdown-All-in-One"><span class="toc-nav-text">Markdown All in One</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Markdown-Preview-Enhanced"><span class="toc-nav-text">Markdown Preview Enhanced</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/05/10/vscode/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+  <script>
+    var gitmentConfig = "zhugexiaoxiaoliang";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "VisualStudioCode使用手册",
+        owner: "zhugexiaoxiaoliang",
+        repo: "https://zhugexiaoxiaoliang.github.io",
+        oauth: {
+          client_id: "a893559541b0f60577b0",
+          client_secret: "793cda806874db8a8f81e91b137427107b4f95af"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  </script>
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2020 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Website by <a href="https://github.com/zhugexiaoxiaoliang" target="_blank" rel="noopener">MaReine</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>
